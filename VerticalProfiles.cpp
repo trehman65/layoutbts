@@ -37,10 +37,10 @@ void VerticalProfiles::verticalProjectionProfiles(cv::Mat imgBin, vector<int> &v
     }
 
     //to truncate zeros in start and end
-    vector<int> alpha;
-    VerticalProfiles::truncateVector(verticalProfiles,alpha);
-    verticalProfiles=alpha;
-
+    vector<int> temp;
+    VerticalProfiles::truncateVector(verticalProfiles,temp);
+    verticalProfiles.clear();
+    VerticalProfiles::noiseFiltering(temp,verticalProfiles,20);
 
 }
 
@@ -74,8 +74,6 @@ void VerticalProfiles::plot(vector<float> temp) {
 
     plt::plot(temp);
     plt::show();
-
-
 }
 
 void VerticalProfiles::gaussianSmoothing(vector<int> &input,vector<int> &blur, int windowSize) {

@@ -22,7 +22,7 @@ int main( int argc, char** argv ) {
     vector<int> filterverticalprofiles;
 
 
-    cvtColor(imgRgb,imgGray,CV_BGR2GRAY);
+    cvtColor(imgRgb,imgGray,CV_BGR2GRAY) ;
     test.binarizeShafait(imgGray,imgBin,50,0.3);
     test.verticalProjectionProfiles(imgBin,verticalprofiles);
     test.gaussianSmoothing(verticalprofiles,filterverticalprofiles,20);
