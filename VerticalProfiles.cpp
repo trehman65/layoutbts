@@ -78,10 +78,26 @@ void VerticalProfiles::plot(vector<float> temp) {
 
 }
 
-void VerticalProfiles::gaussianSmoothing(vector<int> &input,vector<int> &blur) {
+void VerticalProfiles::gaussianSmoothing(vector<int> &input,vector<int> &blur, int windowSize) {
 
-    GaussianBlur(input,blur,cv::Size(5,51),5,5);
+    int i=0;
+    while(i<input.size()-windowSize){
+        blur.push_back(sumNextN(input, windowSize, i)/windowSize);
+        i++;
+    }
 
+
+}
+
+int VerticalProfiles::sumNextN(vector<int> input, int values, int index) {
+
+    int sum=0;
+    for(int i=0; i<values; i++){
+        sum+=input[index];
+        index++;
+    }
+
+    return sum;
 }
 
 void VerticalProfiles::noiseFiltering(vector<int> &input, vector<int> &output, int threshold) {

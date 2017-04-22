@@ -14,6 +14,7 @@ int main( int argc, char** argv ) {
     Mat imgRgb=imread(argv[1]);
 
     vector<int> final;
+
     Mat imgBin;
     Mat imgGray;
     vector<int> verticalprofiles;
@@ -24,8 +25,10 @@ int main( int argc, char** argv ) {
     cvtColor(imgRgb,imgGray,CV_BGR2GRAY);
     test.binarizeShafait(imgGray,imgBin,50,0.3);
     test.verticalProjectionProfiles(imgBin,verticalprofiles);
-    //test.gaussianSmoothing(verticalprofiles,filterverticalprofiles);
-    test.normalizeHistogram(verticalprofiles,normverticalprofiles);
+    test.gaussianSmoothing(verticalprofiles,filterverticalprofiles,20);
+    test.normalizeHistogram(filterverticalprofiles,normverticalprofiles);
     test.plot(normverticalprofiles);
+
+
 
 }
