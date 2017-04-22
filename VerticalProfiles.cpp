@@ -196,3 +196,27 @@ float VerticalProfiles::calculateMean(vector<float> input) {
     }
     return sum/input.size();
 }
+
+
+void VerticalProfiles::proces(string fname) {
+    Mat imgRgb=imread(fname);
+
+    vector<int> final;
+
+    Mat imgBin;
+    Mat imgGray;
+    vector<int> verticalprofiles;
+    vector<float> normverticalprofiles;
+    vector<int> filterverticalprofiles;
+    vector<int> hammingvector;
+
+
+    cvtColor(imgRgb,imgGray,CV_BGR2GRAY) ;
+    VerticalProfiles::binarizeShafait(imgGray,imgBin,50,0.3);
+    VerticalProfiles::verticalProjectionProfiles(imgBin,verticalprofiles);
+    VerticalProfiles::gaussianSmoothing(verticalprofiles,filterverticalprofiles,20);
+    VerticalProfiles::normalizeHistogram(filterverticalprofiles,normverticalprofiles);
+    VerticalProfiles::plot(normverticalprofiles);
+    VerticalProfiles::hammingCalculator(normverticalprofiles,hammingvector ,VerticalProfiles::calculateMean(normverticalprofiles));
+
+}
