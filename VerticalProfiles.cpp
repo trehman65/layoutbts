@@ -76,6 +76,13 @@ void VerticalProfiles::plot(vector<float> temp) {
     plt::show();
 }
 
+void VerticalProfiles::plot(vector<int> temp) {
+
+    plt::plot(temp);
+    plt::show();
+}
+
+
 void VerticalProfiles::gaussianSmoothing(vector<int> &input,vector<int> &blur, int windowSize) {
 
     int i=0;
@@ -117,7 +124,7 @@ void VerticalProfiles::normalizeHistogram(vector<int> &input, vector<float> &nor
         normalised.push_back(input[i]/sum);
     }
 }
-void VerticalProfiles::displayVector(vector<float> input) {
+void VerticalProfiles::displayVector(vector<int> input) {
     for (int i=0; i<input.size(); i++){
         cout<<input[i]<<" ";
     }
@@ -164,4 +171,28 @@ void VerticalProfiles::invertVector(vector<int> &input, vector<int> &inverted) {
         inverted.push_back(input[i]);
     }
 
+}
+
+void VerticalProfiles::hammingCalculator(vector<float> &input, vector<int> &hammingvector, float threshold) {
+
+    for(int i=0; i<input.size(); i++){
+        if(input[i]<threshold){
+            hammingvector.push_back(0);
+        }
+        else{
+            hammingvector.push_back(1);
+        }
+    }
+
+}
+
+
+float VerticalProfiles::calculateMean(vector<float> input) {
+    float mean;
+    float sum=0;
+
+    for(int i=0; i<input.size(); i++){
+        sum+=input[i];
+    }
+    return sum/input.size();
 }

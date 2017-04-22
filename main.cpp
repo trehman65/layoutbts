@@ -20,6 +20,7 @@ int main( int argc, char** argv ) {
     vector<int> verticalprofiles;
     vector<float> normverticalprofiles;
     vector<int> filterverticalprofiles;
+    vector<int> hammingvector;
 
 
     cvtColor(imgRgb,imgGray,CV_BGR2GRAY) ;
@@ -28,6 +29,7 @@ int main( int argc, char** argv ) {
     test.gaussianSmoothing(verticalprofiles,filterverticalprofiles,20);
     test.normalizeHistogram(filterverticalprofiles,normverticalprofiles);
     test.plot(normverticalprofiles);
+    test.hammingCalculator(normverticalprofiles,hammingvector ,test.calculateMean(normverticalprofiles));
 
 
 }

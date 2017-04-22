@@ -26,14 +26,17 @@ public:
     void verticalProjectionProfiles(cv::Mat, vector<int> &);
     void binarizeShafait(Mat &gray, Mat &binary, int w, double k);
     void plot(vector<float>);
+    void plot(vector<int>);
     void gaussianSmoothing(vector<int> &,vector<int> &, int);
     void noiseFiltering(vector<int> &, vector<int> &, int threshold);
     void normalizeHistogram(vector<int> &input, vector<float> &normalised);
-    void displayVector(vector<float>);
+    void displayVector(vector<int>);
     void truncateVector(vector<int> &, vector<int> &);
     void truncateStart(vector<int> &, int&);
     void invertVector(vector<int> &, vector<int> &);
     int sumNextN(vector<int>, int, int);
+    void hammingCalculator(vector<float> &, vector<int> &, float threshold);
+    float calculateMean(vector<float>);
 
     };
 
