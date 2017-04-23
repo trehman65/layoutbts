@@ -9,7 +9,9 @@ using namespace cv;
 
 int main( int argc, char** argv ) {
 
+    vector<int> hamming;
     VerticalProfiles test;
-   test.proces(argv[1]);
+    test.process(argv[1],hamming);
 
 }
+

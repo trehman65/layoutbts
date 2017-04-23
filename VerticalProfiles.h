@@ -37,7 +37,7 @@ public:
     int sumNextN(vector<int>, int, int);
     void hammingCalculator(vector<float> &, vector<int> &, float threshold);
     float calculateMean(vector<float>);
-    void proces(string);
+    void process(string,vector<int>&);
 
     };
 

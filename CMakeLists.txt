@@ -6,7 +6,7 @@ link_directories(/usr/local/lib/ /usr/lib/)
 
 include_directories(/usr/local/include matplotlib-cpp)
 
-set(SOURCE_FILES main.cpp VerticalProfiles.cpp VerticalProfiles.h matplotlib-cpp/matplotlibcpp.h)
+set(SOURCE_FILES main.cpp VerticalProfiles.cpp VerticalProfiles.h matplotlib-cpp/matplotlibcpp.h OneNearest.cpp OneNearest.h)
 add_executable(layoutbts ${SOURCE_FILES})
 
 target_link_libraries(layoutbts python2.7 lept tesseract opencv_core opencv_imgproc opencv_highgui opencv_imgcodecs pthread)

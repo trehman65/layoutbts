@@ -3,8 +3,8 @@
 //
 
 #include "VerticalProfiles.h"
-
 #include "matplotlib-cpp/matplotlibcpp.h"
+
 namespace plt = matplotlibcpp;
 
 void VerticalProfiles::plotRect(cv::Mat &image,vector<cv::Rect> boxes){
@@ -198,7 +198,7 @@ float VerticalProfiles::calculateMean(vector<float> input) {
 }
 
 
-void VerticalProfiles::proces(string fname) {
+void VerticalProfiles::process(string fname,vector<int> &hammingvector) {
     Mat imgRgb=imread(fname);
 
     vector<int> final;
@@ -208,7 +208,6 @@ void VerticalProfiles::proces(string fname) {
     vector<int> verticalprofiles;
     vector<float> normverticalprofiles;
     vector<int> filterverticalprofiles;
-    vector<int> hammingvector;
 
 
     cvtColor(imgRgb,imgGray,CV_BGR2GRAY) ;
