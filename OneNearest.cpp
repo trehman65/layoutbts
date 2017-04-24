@@ -17,7 +17,6 @@ OneNearest::OneNearest(string path) {
 
         fname=path+to_string(i+1)+".JPG";
         layoutProfile.process(fname,hammingVector);
-        cout<<"alpha";
 
         temp.label=i+1;
         temp.hammingVec=hammingVector;
@@ -64,6 +63,7 @@ void OneNearest::findNearest(std::vector<int> input, int &label) {
         sim=compHamming(input,layouts[i].hammingVec);
         if(sim>absim){
             label=layouts[i].label;
+            absim=sim;
         }
     }
 }
