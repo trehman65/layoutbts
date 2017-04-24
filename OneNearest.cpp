@@ -9,17 +9,20 @@
 OneNearest::OneNearest(string path) {
 
     string fname;
-    fstream layoutfolder;
     VerticalProfiles layoutProfile;
     vector<int> hammingVector;
+    layout temp;
 
     for(int i=0; i<5; i++){
 
-        fname=path+to_string(i)+".png";
+        fname=path+to_string(i+1)+".JPG";
         layoutProfile.process(fname,hammingVector);
+        cout<<"alpha";
 
-        this->layouts[i].label=i+1;
-        this->layouts[i].hammingVec=hammingVector;
+        temp.label=i+1;
+        temp.hammingVec=hammingVector;
+
+        layouts.push_back(temp);
 
         hammingVector.clear();
     }
@@ -52,7 +55,7 @@ float OneNearest::sum(std::vector<float> input) {
     return sum;
 }
 
-void OneNearest::findNearestNeighbour(std::vector<int> input, int &label) {
+void OneNearest::findNearest(std::vector<int> input, int &label) {
 
     float sim=0;
     float absim=-1;
@@ -75,15 +78,15 @@ int OneNearest::compHamming(std::vector<int> input, std::vector<int> layout) {
 
 }
 
-void process(string fname){
+void OneNearest::process(string fname){
 
     VerticalProfiles input;
     int label;
     vector<int> hammingInput;
     input.process(fname,hammingInput);
-    findNearestNeighbour(hammingInput,label);
+    findNearest(hammingInput,label);
     cout<<label;
 
-
-
 }
+//TODO: use same function for boht int and float type
+//TODO: test the code and resolve issues

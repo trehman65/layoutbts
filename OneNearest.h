@@ -25,10 +25,11 @@ public:
 
     OneNearest(string path);
     vector<layout> layouts;
+
     float calculateDistance(std::vector<float>, std::vector<float>);
     bool isLonger(std::vector<float>,std::vector<float>);
     float sum(std::vector<float>);
-    void findNearestNeighbour(std::vector<int>,int &);
+    void findNearest(std::vector<int>, int &);
     int compHamming(std::vector<int>, std::vector<int>);
     void process(string);
 
