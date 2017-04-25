@@ -25,7 +25,7 @@ int main( int argc, char** argv ) {
     Evaluation evaluator(train, test);
     float acc;
     evaluator.process(acc);
-    cout<<acc;
+    cout<<endl<<"Overall Accuracy: "<<acc*100;
 
 }
 

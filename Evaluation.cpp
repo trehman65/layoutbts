@@ -37,13 +37,15 @@ void Evaluation::process(float &acc){
 
             pathToImage=pathToFolder+image;
             cout<<"Processing:"<<pathToImage;
+            labelPredicted=eval.process(pathToImage);
+            cout<<", Actual Label: "<<i<<", Predicted Lable: "<<labelPredicted;
 
-            if(eval.process(pathToImage)==i){
-                cout<<": Matched"<<endl;
+            if(labelPredicted==i){
+                cout<<", Matched"<<endl;
                 accuracy.push_back(1);
             }
             else{
-                cout<<": Not Matched"<<endl;
+                cout<<", Not Matched"<<endl;
                 accuracy.push_back(0);
             }
 
