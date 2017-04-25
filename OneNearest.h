@@ -22,8 +22,11 @@ struct layout{
 class OneNearest {
 
 public:
-
+    float process(string);
+    OneNearest();
     OneNearest(string path);
+
+private:
     vector<layout> layouts;
 
     float calculateDistance(std::vector<float>, std::vector<float>);
@@ -31,7 +34,8 @@ public:
     float sum(std::vector<float>);
     void findNearest(std::vector<int>, int &);
     int compHamming(std::vector<int>, std::vector<int>);
-    void process(string);
+
+
 
 };
 

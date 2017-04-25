@@ -1,0 +1,3 @@
+/Users/talha/Coding/ClionProjects/layoutbts/build/CMakeFiles/edit_cache.dir
+/Users/talha/Coding/ClionProjects/layoutbts/build/CMakeFiles/rebuild_cache.dir
+/Users/talha/Coding/ClionProjects/layoutbts/build/CMakeFiles/layoutbts.dir

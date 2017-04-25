@@ -27,6 +27,10 @@ OneNearest::OneNearest(string path) {
     }
 }
 
+OneNearest::OneNearest() {
+
+}
+
 float OneNearest::calculateDistance(std::vector<float> input, std::vector<float> layout) {
 
     vector<float> dist;
@@ -78,15 +82,14 @@ int OneNearest::compHamming(std::vector<int> input, std::vector<int> layout) {
 
 }
 
-void OneNearest::process(string fname){
+float OneNearest::process(string fname){
 
     VerticalProfiles input;
     int label;
     vector<int> hammingInput;
     input.process(fname,hammingInput);
     findNearest(hammingInput,label);
-    cout<<label;
+    return label;
 
 }
 //TODO: use same function for boht int and float type
-//TODO: test the code and resolve issues

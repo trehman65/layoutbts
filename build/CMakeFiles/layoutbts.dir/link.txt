@@ -1,0 +1,1 @@
+/Library/Developer/CommandLineTools/usr/bin/c++    -std=c++11 -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/layoutbts.dir/main.cpp.o CMakeFiles/layoutbts.dir/VerticalProfiles.cpp.o CMakeFiles/layoutbts.dir/OneNearest.cpp.o  -o layoutbts -lpython2.7 -llept -ltesseract -lopencv_core -lopencv_imgproc -lopencv_highgui -lopencv_imgcodecs -lpthread 
