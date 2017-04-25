@@ -12,14 +12,18 @@ using namespace cv;
 
 int main( int argc, char** argv ) {
 
+    //main vertical profiles
 //    vector<int> hamming;
 //    VerticalProfiles test;
 //    test.process(argv[1],hamming);
-//
+
+    //main Onenearest
 //    string path="/Users/talha/Desktop/traindata/";
 //    OneNearest testAll(path);
 //    cout<<testAll.process(argv[1]);
 
+
+   //main evaluation
     string test="/Users/talha/Desktop/testdata/";
     string train="/Users/talha/Desktop/traindata/";
     Evaluation evaluator(train, test);

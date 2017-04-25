@@ -35,8 +35,6 @@ private:
     void findNearest(std::vector<int>, int &);
     int compHamming(std::vector<int>, std::vector<int>);
 
-
-
 };
 
 

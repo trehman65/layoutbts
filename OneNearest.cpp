@@ -60,11 +60,15 @@ float OneNearest::sum(std::vector<float> input) {
 
 void OneNearest::findNearest(std::vector<int> input, int &label) {
 
-    float sim=0;
+    float sim=-5;
     float absim=-1;
+    label=0;
 
+    cout<<", Similarities with classes: ";
     for (int i=0; i<5 ;i++){
+
         sim=compHamming(input,layouts[i].hammingVec);
+        cout<<sim<<" ";
         if(sim>absim){
             label=layouts[i].label;
             absim=sim;
@@ -73,9 +77,10 @@ void OneNearest::findNearest(std::vector<int> input, int &label) {
 }
 
 int OneNearest::compHamming(std::vector<int> input, std::vector<int> layout) {
+
     vector<float> dist;
 
-    for(int i=0; i<input.size(); i++){
+    for(int i=0; (i<input.size()) && (i < layout.size()); i++){
         dist.push_back(input[i]*layout[i]);
     }
     return sum(dist);
@@ -87,8 +92,11 @@ float OneNearest::process(string fname){
     VerticalProfiles input;
     int label;
     vector<int> hammingInput;
+
     input.process(fname,hammingInput);
     findNearest(hammingInput,label);
+    hammingInput.clear();
+
     return label;
 
 }
