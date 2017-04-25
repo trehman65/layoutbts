@@ -10,20 +10,20 @@ OneNearest::OneNearest(string path) {
 
     string fname;
     VerticalProfiles layoutProfile;
-    vector<int> hammingVector;
+    vector<float> verticalProjection;
     layout temp;
 
     for(int i=0; i<5; i++){
 
         fname=path+to_string(i+1)+".JPG";
-        layoutProfile.process(fname,hammingVector);
+        layoutProfile.process(fname,verticalProjection);
 
         temp.label=i+1;
-        temp.hammingVec=hammingVector;
+        temp.normVerticalProjection=verticalProjection;
 
         layouts.push_back(temp);
 
-        hammingVector.clear();
+        verticalProjection.clear();
     }
 }
 
@@ -34,8 +34,8 @@ OneNearest::OneNearest() {
 float OneNearest::calculateDistance(std::vector<float> input, std::vector<float> layout) {
 
     vector<float> dist;
-        for (int i = 0; i < input.size(); i++) {
-            dist.push_back(pow(input[i]-layout[i],2));
+        for (float i = 0; (i < input.size()) && (i < layout.size()); i++) {
+            dist.push_back(abs(input[i]-layout[i]));
         }
     return sum(dist);
 }
@@ -51,36 +51,37 @@ float OneNearest::sum(std::vector<float> input) {
 
     float sum=0;
 
-    for(int i=0; i<input.size(); i++){
+    for(float i=0; i<input.size(); i++){
         sum+=input[i];
     }
 
     return sum;
 }
 
-void OneNearest::findNearest(std::vector<int> input, int &label) {
+void OneNearest::findNearest(std::vector<float> input, float &label) {
 
-    float sim=-5;
-    float absim=-1;
+    float dist=5;
+    float abdis=1;
     label=0;
 
-    cout<<", Similarities with classes: ";
-    for (int i=0; i<5 ;i++){
+    cout<<", Distances: ";
 
-        sim=compHamming(input,layouts[i].hammingVec);
-        cout<<sim<<" ";
-        if(sim>absim){
+    for (float i=0; i<5 ;i++){
+
+        dist=calculateDistance(input,layouts[i].normVerticalProjection);
+        cout<<dist<<" ";
+        if(dist<abdis){
             label=layouts[i].label;
-            absim=sim;
+            abdis=dist;
         }
     }
 }
 
-int OneNearest::compHamming(std::vector<int> input, std::vector<int> layout) {
+float OneNearest::compHamming(std::vector<float> input, std::vector<float> layout) {
 
     vector<float> dist;
 
-    for(int i=0; (i<input.size()) && (i < layout.size()); i++){
+    for(float i=0; (i<input.size()) && (i < layout.size()); i++){
         dist.push_back(input[i]*layout[i]);
     }
     return sum(dist);
@@ -90,14 +91,14 @@ int OneNearest::compHamming(std::vector<int> input, std::vector<int> layout) {
 float OneNearest::process(string fname){
 
     VerticalProfiles input;
-    int label;
-    vector<int> hammingInput;
+    float label;
+    vector<float> verticalInput;
 
-    input.process(fname,hammingInput);
-    findNearest(hammingInput,label);
-    hammingInput.clear();
+    input.process(fname,verticalInput);
+    findNearest(verticalInput,label);
+    verticalInput.clear();
 
     return label;
 
 }
-//TODO: use same function for boht int and float type
+//TODO: use same function for boht float and float type

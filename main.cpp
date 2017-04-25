@@ -13,11 +13,11 @@ using namespace cv;
 int main( int argc, char** argv ) {
 
     //main vertical profiles
-//    vector<int> hamming;
+//    vector<float> vertprof;
 //    VerticalProfiles test;
-//    test.process(argv[1],hamming);
+//    test.process(argv[1],vertprof);
 
-    //main Onenearest
+//    //main Onenearest
 //    string path="/Users/talha/Desktop/traindata/";
 //    OneNearest testAll(path);
 //    cout<<testAll.process(argv[1]);

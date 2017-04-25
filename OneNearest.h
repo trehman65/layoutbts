@@ -15,8 +15,8 @@
 #include "fstream"
 
 struct layout{
-    int label;
-    std::vector<int> hammingVec;
+    float label;
+    std::vector<float> normVerticalProjection;
 };
 
 class OneNearest {
@@ -32,8 +32,8 @@ private:
     float calculateDistance(std::vector<float>, std::vector<float>);
     bool isLonger(std::vector<float>,std::vector<float>);
     float sum(std::vector<float>);
-    void findNearest(std::vector<int>, int &);
-    int compHamming(std::vector<int>, std::vector<int>);
+    void findNearest(std::vector<float>, float &);
+    float compHamming(std::vector<float>, std::vector<float>);
 
 };
 

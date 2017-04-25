@@ -198,7 +198,7 @@ float VerticalProfiles::calculateMean(vector<float> input) {
 }
 
 
-void VerticalProfiles::process(string fname,vector<int> &hammingvector) {
+void VerticalProfiles::process(string fname,vector<float> &normverticalprofiles) {
 
     Mat imgRgb=imread(fname);
 
@@ -207,16 +207,15 @@ void VerticalProfiles::process(string fname,vector<int> &hammingvector) {
     Mat imgBin;
     Mat imgGray;
     vector<int> verticalprofiles;
-    vector<float> normverticalprofiles;
     vector<int> filterverticalprofiles;
 
 
-    cvtColor(imgRgb,imgGray,CV_BGR2GRAY) ;
+    cvtColor(imgRgb,imgGray,CV_BGR2GRAY);
     VerticalProfiles::binarizeShafait(imgGray,imgBin,50,0.3);
     VerticalProfiles::verticalProjectionProfiles(imgBin,verticalprofiles);
     VerticalProfiles::gaussianSmoothing(verticalprofiles,filterverticalprofiles,20);
     VerticalProfiles::normalizeHistogram(filterverticalprofiles,normverticalprofiles);
     //VerticalProfiles::plot(normverticalprofiles);
-    VerticalProfiles::hammingCalculator(normverticalprofiles,hammingvector ,VerticalProfiles::calculateMean(normverticalprofiles));
+   //VerticalProfiles::hammingCalculator(normverticalprofiles,hammingvector ,VerticalProfiles::calculateMean(normverticalprofiles));
 
 }
