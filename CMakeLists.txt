@@ -6,7 +6,13 @@ link_directories(/usr/local/lib/ /usr/lib/)
 
 include_directories(/usr/local/include matplotlib-cpp)
 
-set(SOURCE_FILES main.cpp VerticalProfiles.cpp VerticalProfiles.h matplotlib-cpp/matplotlibcpp.h OneNearest.cpp OneNearest.h Evaluation.cpp Evaluation.h)
-add_executable(layoutbts ${SOURCE_FILES})
+set(SOURCE_FILES VerticalProfiles.cpp VerticalProfiles.h matplotlib-cpp/matplotlibcpp.h OneNearest.cpp OneNearest.h Evaluation.cpp Evaluation.h)
 
-target_link_libraries(layoutbts python2.7 lept tesseract opencv_core opencv_imgproc opencv_highgui opencv_imgcodecs pthread)
+add_executable(layoutEvaluation main-evaluation.cpp ${SOURCE_FILES})
+add_executable(layoutVerticalProjection main-verticalprojection.cpp ${SOURCE_FILES})
+add_executable(layoutKNearest main-knearest.cpp ${SOURCE_FILES})
+
+
+target_link_libraries(layoutEvaluation python2.7 lept tesseract opencv_core opencv_imgproc opencv_highgui opencv_imgcodecs pthread)
+target_link_libraries(layoutVerticalProjection python2.7 lept tesseract opencv_core opencv_imgproc opencv_highgui opencv_imgcodecs pthread)
+target_link_libraries(layoutKNearest python2.7 lept tesseract opencv_core opencv_imgproc opencv_highgui opencv_imgcodecs pthread)
